@@ -53,7 +53,7 @@
             # 1オクターブ上、1オクターブ下、2 オクターブ下も作る
   </pre>
 
-    <il>さきほどの1オクターブ分の周波数を作る処理を関数化</il>
+  <il>さきほどの1オクターブ分の周波数を作る処理を関数化</il>
 
 
   <pre>
@@ -86,27 +86,27 @@
   <il>音価(音の長さ)をつくる</il>
 
 
-<pre>
+  <pre>
     QUATER = 1/2
     EIGHTH =  QUATER / 2
     SIXTEENTH =  EIGHTH / 2
-</pre>
+  </pre>
 
 
   <il>周波数と音価からsin波として音を作る関数</il>
 
 
-<pre>
+  <pre>
   def generate_note(frequency, note_value):
         one_sec_note = np.sin(TONE_DICT[frequency] * 2 * np.pi * np.linspace(0, 2, 2 * BIT_RATE))
         return one_sec_note[0:int(len(one_sec_note) * note_value)]
-</pre>
+  </pre>
 
 
   <il>配列を結合する = 音を楽譜で横に並べる = メロディ</il>
 
 
-<pre>
+  <pre>
     c3v4 = generate_note('C3', QUATER)
     d3v4 = generate_note('D3', QUATER)
     e3v4 = generate_note('E3', QUATER)
@@ -115,13 +115,13 @@
     frog = np.hstack((c3v4, d3v4, e3v4, f3v4, e3v4, d3v4, c3v4))
     IPython.display.Audio(frog, rate=BIT_RATE)
 
-</pre>
+  </pre>
 
 
   <il>配列の和 = 音を楽譜で縦に並べる = ハーモニー</il>
 
 
-<pre>
+  <pre>
     c3v2 = generate_note('C3', QUATER * 2)
     e3v2 = generate_note('E3', QUATER * 2)
     g3v2 = generate_note('G3',QUATER * 2)
@@ -129,13 +129,13 @@
     c_triad_chord = np.vstack((c3v2, e3v2, g3v2))
     IPython.display.Audio(c_triad_chord, rate=BIT_RATE)
  
-</pre>
+  </pre>
 
 
   <il>残酷な天使のテーゼ～エヴァンゲリオン～</il>
 
 
-<pre>
+  <pre>
       melody_notes = [
         ('C4', QUATER), ('Ds4', QUATER), ('F4', EIGHTH + SIXTEENTH), ('Ds4', EIGHTH + SIXTEENTH), ('F4', EIGHTH),
         # ドミsファミsファ ざんこくな
@@ -191,13 +191,13 @@
     melody_wave = np.hstack([generate_note(tone, value) for tone, value in melody_notes])
     Eva1_audio = IPython.display.Audio(melody_wave, rate=BIT_RATE)
     IPython.display.display(Eva1_audio)
-</pre>
+  </pre>
 
 
   <il>長さの関係で一旦区切る</il>
 
 
-<pre>
+  <pre>
     melody_notes = [
         ('Ds4', SIXTEENTH + SIXTEENTH/2), ('Ds4', SIXTEENTH + SIXTEENTH/2), ('D4', SIXTEENTH), ('Ds4', SIXTEENTH +     SIXTEENTH/2), ('Ds4', SIXTEENTH + SIXTEENTH/2), ('D4', SIXTEENTH),
         ('F4', SIXTEENTH + SIXTEENTH/2), ('F4', SIXTEENTH + SIXTEENTH/2), ('Ds4', SIXTEENTH), ('D4', SIXTEENTH + SIXTEENTH/2), ('C4', SIXTEENTH + SIXTEENTH/2), ('D4', SIXTEENTH),
@@ -244,13 +244,13 @@
     Eva2_audio = IPython.display.Audio(melody_wave, rate=BIT_RATE)
     IPython.display.display(Eva2_audio)
 
-</pre>
+  </pre>
 
 
   <il>一応間奏も</il>
 
 
-<pre>
+  <pre>
      melody_notes = [
     ('G4', EIGHTH), ('F4', EIGHTH), ('C5', QUATER), ('C5', QUATER + QUATER), 
     ('G4', EIGHTH), ('F4', EIGHTH), ('C5', EIGHTH + SIXTEENTH), ('As4', QUATER + QUATER),
@@ -262,14 +262,14 @@
     melody_wave = np.hstack([generate_note(tone, value) for tone, value in melody_notes])
     Eva3_audio = IPython.display.Audio(melody_wave, rate=BIT_RATE)
     IPython.display.display(Eva3_audio) 
-</pre>
+  </pre>
 
 
   <il>2番以降は繰り返しです</il>
-</ol>
+  
 
-<pre>
- ~バッキングはまだ上手くいっていないのでお手柔らかに~
+  <pre>
+   ~バッキングはまだ上手くいっていないのでお手柔らかに~
 
     #backing_notes = [
         #('C3', QUATER), ('C3', QUATER), ('F2', QUATER), ('F2', QUATER), 
@@ -317,6 +317,7 @@
 
     #Eva_wave = np.vstack((melody_wave, backing_wave)) # メロディとバッキングを合わせる、音の長さが同じでないとエラー
     #IPython.display.Audio(Eva_wave, rate=BIT_RATE) 
-</pre>
+  </pre>
+  </ol>
 </body>
 </html>
