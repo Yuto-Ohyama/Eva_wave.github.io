@@ -12,17 +12,17 @@
   <ol>
   <li>とりあえず音を鳴らしてみる</li>
   </ol>
-    import numpy as np
+  <code>import numpy as np
     import IPython.display 
 
     BIT_RATE = 44100
     concert_pitch = 220
 
-    A3 = concert_pitch 
+    A3 = concert_pitch </code>
 
         # ピアノでいう、いわゆる「ラ」の音
 
-    duration = 3
+  <code>duration = 3
     sample_A3 = np.sin(A3 * 2 * np.pi * np.linspace(0, duration, duration * BIT_RATE))
     IPython.display.Audio(sample_A3, rate=BIT_RATE)
 
@@ -30,21 +30,21 @@
         ratios = [2 ** (i / 12) for i in range(0, 13)]
         tone_names = ['A3', 'As3', 'B3', 'C4', 'Cs4', 'D4', 'Ds4', 'E4', 'F4', 'Fs4', 'G4', 'Gs4','A4' ]
 
-        TONE_DICT = {}
+        TONE_DICT = {}</code>
 
             # A3からA4のクロマチックスケール
     
-        for ratio, tone_name in zip(ratios, tone_names):
+    <code>for ratio, tone_name in zip(ratios, tone_names):
             duration = 1
             frequency = ratio * A3
             tmp_sound = np.sin(frequency * 2 * np.pi * np.linspace(0, duration, duration * BIT_RATE))
-            audio=IPython.display.Audio(tmp_sound, rate=BIT_RATE)
+            audio=IPython.display.Audio(tmp_sound, rate=BIT_RATE)</code>
 
             # あとで使えるように辞書に周波数を入れとく
-            TONE_DICT[tone_name] = frequency
+        <code>TONE_DICT[tone_name] = frequency
             # Jupyter上に表示
             print(f'tone_name:{tone_name}, frequency: {frequency}')
-            IPython.display.display(audio)
+            IPython.display.display(audio)</code>
 
 
             # 1オクターブ上、1オクターブ下、2 オクターブ下も作る
