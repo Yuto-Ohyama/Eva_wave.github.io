@@ -11,7 +11,6 @@
 <!--これはコメントアウト-->
   <ol>
   <li>とりあえず音を鳴らしてみる</li>
-  </ol>
   <pre>
     import numpy as np
     import IPython.display 
@@ -53,9 +52,9 @@
 
             # 1オクターブ上、1オクターブ下、2 オクターブ下も作る
   </pre>
-  <ol>
+
     <il>さきほどの1オクターブ分の周波数を作る処理を関数化</il>
-  </ol>
+
 
   <pre>
         def generate_octave(start, tone_names):
@@ -83,9 +82,9 @@
         a4_a5 = generate_octave(TONE_DICT['A3'] * 2, tone_names_a4_a5)  # 基準音(440Hz)の4倍の周波数 = 2オクターブ上の音から始める
         TONE_DICT.update(a4_a5)
   </pre>
-<ol>
+
   <il>音価(音の長さ)をつくる</il>
-</ol>
+
 
 <pre>
     QUATER = 1/2
@@ -93,9 +92,9 @@
     SIXTEENTH =  EIGHTH / 2
 </pre>
 
-<ol>
+
   <il>周波数と音価からsin波として音を作る関数</il>
-</ol>
+
 
 <pre>
   def generate_note(frequency, note_value):
@@ -103,9 +102,9 @@
         return one_sec_note[0:int(len(one_sec_note) * note_value)]
 </pre>
 
-<ol>
+
   <il>配列を結合する = 音を楽譜で横に並べる = メロディ</il>
-</ol>
+
 
 <pre>
     c3v4 = generate_note('C3', QUATER)
@@ -118,9 +117,9 @@
 
 </pre>
 
-<ol>
+
   <il>配列の和 = 音を楽譜で縦に並べる = ハーモニー</il>
-</ol>
+
 
 <pre>
     c3v2 = generate_note('C3', QUATER * 2)
@@ -132,9 +131,9 @@
  
 </pre>
 
-<ol>
+
   <il>残酷な天使のテーゼ～エヴァンゲリオン～</il>
-</ol>
+
 
 <pre>
       melody_notes = [
@@ -194,9 +193,9 @@
     IPython.display.display(Eva1_audio)
 </pre>
 
-<ol>
+
   <il>長さの関係で一旦区切る</il>
-</ol>
+
 
 <pre>
     melody_notes = [
@@ -247,9 +246,9 @@
 
 </pre>
 
-<ol>
+
   <il>一応間奏も</il>
-</ol>
+
 
 <pre>
      melody_notes = [
@@ -265,7 +264,7 @@
     IPython.display.display(Eva3_audio) 
 </pre>
 
-<ol>
+
   <il>2番以降は繰り返しです</il>
 </ol>
 
