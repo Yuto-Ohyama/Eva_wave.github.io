@@ -1,1 +1,2 @@
 # Eva_wave.github.io
+ブランチをmainからmasterに切り替えでpythonファイルをpullできます
